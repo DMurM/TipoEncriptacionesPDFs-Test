@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Pública</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Web Pública</h1>
+        <form action="http://localhost:5500/upload_pdf" method="post" enctype="multipart/form-data">
+            <label for="pdf">Seleccionar archivo PDF</label>
+            <input type="file" id="pdf" name="pdf" accept=".pdf">
+            <input type="submit" value="Subir PDF">
+        </form>
+    </div>
+</body>
+</html>
