@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import os
 
 try:
     from pyhanko.pdf_utils.misc import PdfReadError
@@ -115,17 +116,28 @@ class PdfHashExtractor:
         return "*".join(passwords)
 
 
+def search_pdf_files(directory):
+    pdf_files = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".pdf"):
+                pdf_files.append(os.path.join(root, file))
+    return pdf_files
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="PDF Hash Extractor")
+    parser = argparse.ArgumentParser(description="PDF Hash Ext  ractor")
     parser.add_argument(
-        "pdf_files", nargs="+", help="PDF file(s) to extract information from"
+        "directory", help="Directory containing PDF files to extract information from"
     )
     parser.add_argument(
         "-d", "--debug", action="store_true", help="Print the encryption dictionary"
     )
     args = parser.parse_args()
 
-    for filename in args.pdf_files:
+    pdf_files = search_pdf_files(args.directory)
+
+    for filename in pdf_files:
         try:
             extractor = PdfHashExtractor(filename)
             pdf_hash = extractor.parse()
