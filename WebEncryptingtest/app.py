@@ -21,7 +21,7 @@ def upload_pdf():
         if not os.path.exists('WebEncryptingtest/pdf_files'): #Substituir los 3 directorios para enviar los pdfs en "x" directorio
             os.makedirs('WebEncryptingtest/pdf_files') #
         file.save(os.path.join('WebEncryptingtest/pdf_files', file.filename)) #
-        return 'Archivo PDF subido exitosamente.'
+        return  ('Archivo PDF subido exitosamente. ' + file.filename)
     else:
         return 'La extensión del archivo no está permitida o el archivo está vacío.'
 
