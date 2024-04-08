@@ -83,4 +83,4 @@ def upload_pdf():
         return 'La extensión del archivo no está permitida o el archivo está vacío.'
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5500)
+    app.run(debug=True, port=5500)
